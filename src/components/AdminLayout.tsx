@@ -1,5 +1,8 @@
 import { Layout, Menu, MenuProps } from 'antd'
+import { observer } from 'mobx-react-lite'
 import { Link, Outlet } from 'react-router-dom'
+import { authStore } from '../stores/AuthStore'
+import { LoginForm } from './LoginForm'
 
 interface IAdminLayoutProps { }
 
@@ -22,7 +25,19 @@ const menuItems: MenuProps['items'] = [
     },
 ]
 
-export const AdminLayout: React.FC<IAdminLayoutProps> = (props) => {
+export const AdminLayout: React.FC<IAdminLayoutProps> = observer((props) => {
+    if (!authStore.isAutheticated) {
+        return <div
+            style={{
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}
+        >
+            <LoginForm />
+        </div>
+    }
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <Layout.Sider>
@@ -37,4 +52,4 @@ export const AdminLayout: React.FC<IAdminLayoutProps> = (props) => {
 
         </Layout>
     )
-}
+})
