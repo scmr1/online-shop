@@ -1,5 +1,6 @@
 import { Layout, Menu, MenuProps } from 'antd'
 import { Link, Outlet } from 'react-router-dom'
+import classNames from '@/globalStyles.module.less'
 
 interface IAdminLayoutProps { }
 
@@ -24,7 +25,7 @@ const menuItems: MenuProps['items'] = [
 
 export const AdminLayout: React.FC<IAdminLayoutProps> = (props) => {
     return (
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout className={classNames.fullHeight}>
             <Layout.Sider>
                 <Menu items={menuItems} theme="dark" />
             </Layout.Sider>

@@ -5,6 +5,7 @@ import 'antd/dist/antd.css'
 import { AdminLayout } from './components/AdminLayout'
 import { AdminHome } from './pages/admin/AdminHome'
 import { UsersList } from './pages/admin/UsersList'
+import './globalStyles.module.less'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
