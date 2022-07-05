@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { Link, Outlet } from 'react-router-dom'
 import { authStore } from '../stores/AuthStore'
 import { LoginForm } from './LoginForm'
+import classNames from '@/globalStyles.module.less'
 
 interface IAdminLayoutProps { }
 
@@ -39,7 +40,7 @@ export const AdminLayout: React.FC<IAdminLayoutProps> = observer((props) => {
         </div>
     }
     return (
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout className={classNames.fullHeight}>
             <Layout.Sider>
                 <Menu items={menuItems} theme="dark" />
             </Layout.Sider>
