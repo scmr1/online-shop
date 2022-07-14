@@ -1,8 +1,9 @@
-import { Layout, Menu, MenuProps } from 'antd'
+import { Button, Layout, Menu, MenuProps } from 'antd'
 import { observer } from 'mobx-react-lite'
 import { Link, Outlet } from 'react-router-dom'
-import classNames from '@/globalStyles.module.less'
+import globalClassNames from '@/globalStyles.module.less'
 import { authStore } from '../stores/AuthStore'
+import classNames from './AdminLayout.module.less'
 import { LoginForm } from './LoginForm'
 
 interface IAdminLayoutProps { }
@@ -43,9 +44,12 @@ export const AdminLayout: React.FC<IAdminLayoutProps> = observer((props) => {
     }
 
     return (
-        <Layout className={classNames.fullHeight}>
+        <Layout className={globalClassNames.fullHeight}>
             <Layout.Sider>
-                <Menu items={menuItems} theme="dark" />
+                <div className={classNames.mainMenu}>
+                    <Menu items={menuItems} theme="dark" />
+                    <Button onClick={() => authStore.logout()}>Logout</Button>
+                </div>
             </Layout.Sider>
 
             <Layout.Content>

@@ -33,8 +33,9 @@ class AuthStore {
 
     }
 
-    logout() {
-        this.isAutheticated = false
+    async logout() {
+        await axios.post('/api/auth/logout')
+        runInAction(() => {this.isAutheticated = false})
     }
 }
 
